@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Angular Test</h2>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search by title.." [(ngModel)]='searchTitle'>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>title</th>
+        <th>url</th>
+        <th>created_at</th>
+        <th>author</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let item of listData|searchText:searchTitle' data-toggle="modal" data-target="#myModal" (click)="getSelectedRow(item)">
+        <td>{{item.title}}</td>
+        <td>{{item.url}}</td>
+        <td>{{item.created_at}}</td>
+        <td>{{item.author}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Selected JSON Data</h4>
+      </div>
+      <div class="modal-body">
+      {{selectedData|json}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
